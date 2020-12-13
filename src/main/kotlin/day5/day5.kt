@@ -21,16 +21,16 @@ fun binary(str: String, size: Int): Int {
 
 fun main() {
     val input = File("src/main/kotlin/day5/input.txt").readLines()
-    val set = mutableMapOf<Int, Int>()
+    val map = mutableMapOf<Int, Int>()
     var id: Int
     var max = 0
     for (i in input) {
         id = binary(i.take(7), 127) * 8 + binary(i.takeLast(3), 7)
-        set[id] = id
+        map[id] = id
         if (max < id) max = id
     }
-    for (i in set.toSortedMap().firstKey()..set.toSortedMap().lastKey()) {
-        if (!set.containsKey(i)) println(i)
+    for (i in map.toSortedMap().firstKey()..map.toSortedMap().lastKey()) {
+        if (!map.containsKey(i)) println(i)
     }
 }
 
