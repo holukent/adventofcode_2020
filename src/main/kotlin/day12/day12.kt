@@ -47,8 +47,8 @@ fun part2(file: List<Pair<String, Int>>) {
 
             else -> {
                 waypoint = when (file[index]) {
-                    Pair("R",90), Pair("L",270)-> Pair(waypoint.second, waypoint.first * -1)
-                    Pair("R",270),Pair("L",90) -> Pair(waypoint.second * -1, waypoint.first)
+                    Pair("R", 90), Pair("L", 270) -> Pair(waypoint.second, waypoint.first * -1)
+                    Pair("R", 270), Pair("L", 90) -> Pair(waypoint.second * -1, waypoint.first)
                     else -> Pair(waypoint.first * -1, waypoint.second * -1)
                 }
             }
@@ -57,7 +57,6 @@ fun part2(file: List<Pair<String, Int>>) {
     }
     println(abs(x) + abs(y))
 }
-
 
 fun main() {
     val input = File("src/main/kotlin/day12/input.txt").readLines().map { Pair(it.take(1), it.drop(1).toInt()) }

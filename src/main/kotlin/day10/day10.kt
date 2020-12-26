@@ -3,22 +3,22 @@ package day10
 
 import java.io.File
 
-//fun part1(file: List<Int>) {
-//    val array = IntArray(2)
-//    for (i in 1..file.lastIndex) {
-//        if (file[i] - file[i - 1] == 1) array[0]++ else array[1]++
-//    }
-//
-//    println((array[0]) * (array[1]))
-//}
-//
-//fun part2(file: MutableList<Int>) {
-//    val list = mutableListOf<Int>()
-//    loop@ for (i in 1..file.lastIndex - 1) {
-//        if (file[i + 1] - file[i - 1] > 3) continue@loop else list.add(file[i])
-//    }
-//    println(list)
-//}
+fun part1(file: List<Int>) {
+    val array = IntArray(2)
+    for (i in 1..file.lastIndex) {
+        if (file[i] - file[i - 1] == 1) array[0]++ else array[1]++
+    }
+
+    println((array[0]) * (array[1]))
+}
+
+fun part2(file: MutableList<Int>) {
+    val list = mutableListOf<Int>()
+    loop@ for (i in 1..file.lastIndex - 1) {
+        if (file[i + 1] - file[i - 1] > 3) continue@loop else list.add(file[i])
+    }
+    println(list)
+}
 
 
 fun main() {
