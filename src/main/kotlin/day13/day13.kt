@@ -14,17 +14,17 @@ fun part1(file: List<String>) {
 
 fun part2(file: List<String>) {
     val busid = file.filter { it != "x" }.map { Pair(file.indexOf(it), it.toInt()) }
-    var timetamp = 0L
-    var step = busid[0].second.toLong()
+    var result = 0L
+    var timetamp = busid[0].second.toLong()
     for (i in 1..busid.lastIndex) {
         while (true) {
-            if ((timetamp + busid[i].first) % busid[i].second == 0L) {
-                step *= busid[i].second
+            if ((result + busid[i].first) % busid[i].second == 0L) {
+                timetamp *= busid[i].second
                 break
-            } else timetamp += step
+            } else result += timetamp
         }
     }
-    println(timetamp)
+    println(result)
 }
 
 
