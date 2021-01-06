@@ -8,11 +8,11 @@ var mem = ""
 fun tobinary(number: Long) = number.toString(2).padStart(36, '0')
 
 fun todecimal(str: String): Long {
-    var result = 0L
+    var result = 0.0
     for (s in str.indices) {
-        if (str[s] == '1') result += (2.0.pow(str.lastIndex - s).toLong())
+        if (str[s] == '1') result += (2.0.pow(str.lastIndex - s))
     }
-    return result
+    return result.toLong()
 }
 
 fun part1(input: List<String>): Long {
@@ -50,7 +50,7 @@ fun part2(input: List<String>): Long {
                 list.forEach { temp.add(it + s) }
                 list.addAll(temp)
             }
-            list.forEach { it -> it.let { address[it.toLong()] = i.split(" ")[2].toLong() } }
+            list.forEach { address[it.toLong()] = i.split(" ")[2].toLong() }
         }
     }
     return address.values.sum()
