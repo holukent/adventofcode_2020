@@ -9,21 +9,17 @@ fun tobinary(number: Long) = number.toString(2).padStart(36, '0')
 
 fun todecimal(str: String): Long {
     var result = 0.0
-    for (s in str.indices) {
-        if (str[s] == '1') result += (2.0.pow(str.lastIndex - s))
-    }
+    str.forEachIndexed { index, c -> if (c == '1') result += (2.0.pow(str.lastIndex - index)) }
     return result.toLong()
 }
 
 fun part1(input: List<String>): Long {
     val address = mutableMapOf<Long, Long>()
     for (i in input) {
-        var result = ""
         if (i.contains("mask")) mask = i.split(" ")[2] else {
+            var result = ""
             mem = tobinary(i.split(" ")[2].toLong())
-            for (m in 0..mask.lastIndex) {
-                result += if (mask[m] == 'X') mem[m] else mask[m]
-            }
+            mask.forEachIndexed { index, c -> result += if (c == 'X') mem[index] else mask[index] }
             address[i.split(" ")[0].drop(4).dropLast(1).toLong()] = todecimal(result)
         }
     }
@@ -36,7 +32,7 @@ fun part2(input: List<String>): Long {
         if (i.contains("mask")) mask = i.split(" ")[2] else {
             mem = tobinary(i.split(" ")[0].drop(4).dropLast(1).toLong())
             var result = 0.0
-            val set = mutableListOf<Double>()
+            val set = mutableSetOf<Double>()
             mask.forEachIndexed { index, c ->
                 when {
                     c == 'X' -> set.add(2.0.pow(35 - index))
