@@ -22,5 +22,4 @@ fun main() {
     input[1].split("\n").forEach { list.add(it) }
 
 //    part1(rulesmap,list)
-
 }
